@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 集合 | 知识天地</title>
+  <title>mysql日志 | 知识天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java&#x2F;...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知识天地">
-<meta property="og:url" content="http://yoursite.com/tags/%E9%9B%86%E5%90%88/index.html">
+  <meta name="description" content="mysql有哪几种日志文件1. 错误日志用来记录MySQL服务器运行过程中的错误信息。 默认是开启的无法关闭在主从环境下，从服务器进程的信息也会呗记录进错误日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql日志">
+<meta property="og:url" content="http://yoursite.com/mysql/mysql%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="知识天地">
-<meta property="og:description" content="Java&#x2F;...">
+<meta property="og:description" content="mysql有哪几种日志文件1. 错误日志用来记录MySQL服务器运行过程中的错误信息。 默认是开启的无法关闭在主从环境下，从服务器进程的信息也会呗记录进错误日志">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-20T10:05:00.037Z">
+<meta property="article:modified_time" content="2020-07-21T06:03:10.469Z">
 <meta property="article:author" content="huyan">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="log">
 <meta name="twitter:card" content="summary">
   
   
@@ -58,11 +60,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="/categories/">分类</a></li>
-	        
-				<li><a href="/archives/">文章</a></li>
+				<li><a href="/categories">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -120,10 +118,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,16 +133,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="/categories/">分类</a></li>
-		        
-					<li style="width: 25%"><a href="/archives/">文章</a></li>
+					<li style="width: 50%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -163,60 +153,153 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mysql/mysql日志" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/20/java/java-%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-07-20T09:50:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/20/java/java-%E9%9B%86%E5%90%88/">java-collections</a>
+    <h1 class="article-title" itemprop="name">
+      mysql日志
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/mysql/mysql%E6%97%A5%E5%BF%97/" class="archive-article-date">
+  	<time datetime="2020-07-20T10:05:00.037Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="mysql有哪几种日志文件"><a href="#mysql有哪几种日志文件" class="headerlink" title="mysql有哪几种日志文件"></a>mysql有哪几种日志文件</h4><h5 id="1-错误日志"><a href="#1-错误日志" class="headerlink" title="1. 错误日志"></a>1. 错误日志</h5><p>用来记录MySQL服务器运行过程中的错误信息。 默认是开启的无法关闭<br>在主从环境下，从服务器进程的信息也会呗记录进错误日志</p>
+<a id="more"></a>
+
+<h5 id="2-查询日志"><a href="#2-查询日志" class="headerlink" title="2. 查询日志"></a>2. 查询日志</h5><p>查询日志记录了数据库执行的所有命令，不管正确与否，都会被记录，具体原因如下：</p>
+<pre><code>insert查询为了避免数据冲突，如果此前插入过数据，当前插入的数据如果跟主键或唯一键的数据重复那肯定会报错
+update 时也会查询因为更新的时候很可能会更新某一块数据
+delete 查询，只删除符合条件的数据</code></pre><p>MySQL查询都会产生日志，在并发操作非常多的场景下，查询信息会非常多，那么如果都记录下来会导致 IO 非常大，影响 MySQL 性能，因此如果不是在调试环境下，是不建议开启查询日志功能的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">log</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql//" class="article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/mysql/mysql%E6%97%A5%E5%BF%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -239,9 +322,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -309,7 +392,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集合</a>
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
             
             <div class="clearfix"></div>
@@ -391,8 +474,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">hexo样式主题来源：https://github.com/litten/hexo-theme-yilia</div>
   	  	
     	</section>
     
