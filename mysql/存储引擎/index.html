@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>tags | 知识天地</title>
+  <title>存储引擎 | 知识天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java&#x2F;...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="MySQL有哪些存储引擎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储引擎">
+<meta property="og:url" content="http://yoursite.com/mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="知识天地">
-<meta property="og:description" content="Java&#x2F;...">
+<meta property="og:description" content="MySQL有哪些存储引擎">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-21T11:19:35.617Z">
-<meta property="article:modified_time" content="2020-07-21T06:08:07.000Z">
+<meta property="og:image" content="http://yoursite.com/mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/images/1595431143663.png">
+<meta property="article:published_time" content="2020-07-22T15:05:04.495Z">
+<meta property="article:modified_time" content="2020-07-22T15:29:07.744Z">
 <meta property="article:author" content="huyan">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="存储引擎">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/images/1595431143663.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -153,27 +155,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-mysql/存储引擎" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      存储引擎
     </h1>
   
 
         
-        <a href="/tags/index.html" class="archive-article-date">
-  	<time datetime="2020-07-21T11:19:35.617Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
+        <a href="/mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="archive-article-date">
+  	<time datetime="2020-07-22T15:05:04.495Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="MySQL有哪些存储引擎"><a href="#MySQL有哪些存储引擎" class="headerlink" title="MySQL有哪些存储引擎"></a>MySQL有哪些存储引擎</h3><a id="more"></a>
+
+<ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+<li>Memory</li>
+<li>NDB</li>
+</ul>
+<h3 id="说一说InnoDB存储引擎"><a href="#说一说InnoDB存储引擎" class="headerlink" title="说一说InnoDB存储引擎"></a>说一说InnoDB存储引擎</h3><h3 id="说一说MyISAM"><a href="#说一说MyISAM" class="headerlink" title="说一说MyISAM"></a>说一说MyISAM</h3><h3 id="InnoDB与MyISAM的区别"><a href="#InnoDB与MyISAM的区别" class="headerlink" title="InnoDB与MyISAM的区别"></a>InnoDB与MyISAM的区别</h3><ul>
+<li>InnoDB支持事务，MyISAM不支持事务，</li>
+<li>InnoDB支持外键，MyISAM不支持，对一个包含了外键关系的表修改其存储引擎为MyISAM会报错、</li>
+<li>InnoDB是聚集索引，MyISAM是非聚集索引（见索引分支）</li>
+<li>InnoDB不保存表的具体行数，所以 select count(*) from T 会造成全表扫描，而MyISAM保存了一个变量来记录总行数，执行上述sql只需要返回该变量即可，速度相当快。</li>
+<li>InnoDB锁的最小粒度是行锁，MyISAM锁的最小粒度是表锁。</li>
+</ul>
+<p><img src="./images/1595431143663.png" alt="详情对比"></p>
+<h3 id="一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15-16-17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15-？"><a href="#一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15-16-17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15-？" class="headerlink" title="一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15 ？"></a>一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15 ？</h3><ul>
+<li>如果表的存储引擎是MyISAM，那么是18。因为MyISAM表会把自增主键的最大ID 记录到数据文件中，重启MySQL自增主键的最大ID也不会丢失；</li>
+<li>如果表的存储引擎是InnoDB，那么是15。因为InnoDB 表只是把自增主键的最大ID记录到内存中，所以重启数据库或对表进行OPTION操作，都会导致最大ID丢失。</li>
+</ul>
+
       
 
       
@@ -181,7 +203,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">存储引擎</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql//" class="article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -231,7 +275,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/tags/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -243,6 +287,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/mysql/%E4%BA%8B%E5%8A%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          事务
+        
+      </div>
+    </a>
+  
+  
+    <a href="/mysql/%E6%97%A5%E5%BF%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -293,7 +356,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
