@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>知识天地</title>
+  <title>mysql索引面试题 | 知识天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java&#x2F;...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知识天地">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="如何评估一张表是否需要建立索引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql索引面试题">
+<meta property="og:url" content="http://yoursite.com/mysql/3.1.%20mysql%E7%B4%A2%E5%BC%95%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="知识天地">
-<meta property="og:description" content="Java&#x2F;...">
+<meta property="og:description" content="如何评估一张表是否需要建立索引">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-23T01:00:32.958Z">
-<meta property="article:modified_time" content="2020-07-21T03:13:38.000Z">
+<meta property="article:published_time" content="2020-07-24T11:26:16.455Z">
+<meta property="article:modified_time" content="2020-07-25T06:20:43.496Z">
 <meta property="article:author" content="huyan">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="索引">
+<meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
   
   
@@ -153,53 +155,208 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article class="article">
-  <h3 class="category-count">共计 4 个分类, 14 个标签</h3>
+            <article id="post-mysql/3.1. mysql索引面试题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-  <ul class="category-list">
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/http/" class="category-list-link" title="http">
-            http
-            <span class="category-list-count">1</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/mysql/" class="category-list-link" title="mysql">
-            mysql
-            <span class="category-list-count">7</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/redis/" class="category-list-link" title="redis">
-            redis
-            <span class="category-list-count">2</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/网络通信/" class="category-list-link" title="网络通信">
-            网络通信
-            <span class="category-list-count">3</span>
-          </a>
-        </li>
-      
-    
-  </ul>
+    <h1 class="article-title" itemprop="name">
+      mysql索引面试题
+    </h1>
   
-  <div class="tag-cloud">
-    <a href="/tags/cookie/" style="font-size: 20px;">cookie</a> <a href="/tags/http/" style="font-size: 27.5px;">http</a> <a href="/tags/ip/" style="font-size: 20px;">ip</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/mysql/" style="font-size: 35px;">mysql</a> <a href="/tags/redis/" style="font-size: 27.5px;">redis</a> <a href="/tags/session/" style="font-size: 20px;">session</a> <a href="/tags/sql%E4%BC%98%E5%8C%96/" style="font-size: 20px;">sql优化</a> <a href="/tags/tcp/" style="font-size: 27.5px;">tcp</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 20px;">事务</a> <a href="/tags/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" style="font-size: 20px;">存储引擎</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 27.5px;">索引</a> <a href="/tags/%E9%94%81/" style="font-size: 20px;">锁</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 27.5px;">面试题</a>
+
+        
+        <a href="/mysql/3.1.%20mysql%E7%B4%A2%E5%BC%95%E9%9D%A2%E8%AF%95%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-07-24T11:26:16.455Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="如何评估一张表是否需要建立索引"><a href="#如何评估一张表是否需要建立索引" class="headerlink" title="如何评估一张表是否需要建立索引"></a>如何评估一张表是否需要建立索引</h3><a id="more"></a>
+<p><strong>根据表数据的大小</strong><br>如果一张表的存放常量值，只有几百条大小，那么久完全没有必要创建索引，毕竟索引文件也是需要需要磁盘空间的</p>
+<p><strong>根据查询字段的频繁程度</strong><br>索引字段的建立应该结合业务需求，选出业务中查询频率最高的字段建立索引/联合索引，此字段的选择应该满足以下条件</p>
+<ul>
+<li>高选择性：选择性是指通过索引字段查询返回的结果集占表数据总数据量的百分比，该值越小选择性越高，该值越大选择性越低（为啥呢？，假设你创建了一个索引，然后查询用到了索引返回了10万条数据，结果这张表就11万数据，那完全就不需要建立索引了，毕竟回表回了10万次，比全表扫描没有好多少）</li>
+<li>空值少： 避免在空值（Null）很多的字段上建立索引，大量的空值会降低索引效率</li>
+<li>数据分布均匀： 索引字段中，个别数据值占总数据量的百分率明显低于其他数据值占总数据量的百分率，表明该字段数据值分布不均匀。会导致数据库选择错误索引，生成错误的查询执行计划</li>
+</ul>
+<p><strong>避免过多索引</strong><br>首先，过多的索引会占用大量的磁盘文件<br>其次，mysql在查询时，会有查询优化器进行查询分析，过多的索引会导致选择合适的索引这一过程变慢</p>
+<p><strong>使用唯一索引</strong><br>考虑某列中值的分布。对于唯一值的列，索引的效果最好，而具有多个重复值的列，其索引效果最差。例如，存放年龄的列具有不同值，很容易区分各行。而用来记录性别的列，只含有“男”和“女”，则对此列进行索引没有多大用处（不管搜索哪个值，都会得出大约一半的行）。</p>
+<p><strong>使用短索引</strong><br>如果对串列进行索引，应该指定一个前缀长度，只要有可能就应该这样做。例如，如果有一个 CHAR(200) 列，如果在前 10 个或 20 个字符内，多数值是惟一的，那么就不要对整个列进行索引。对前 10 个或 20 个字符进行索引能够节省大量索引空间，也可能会使查询更快。较小的索引涉及的磁盘 I/O 较少，较短的值比较起来更快。<br>更为重要的是，对于较短的键值，索引高速缓存中的块能容纳更多的键值，因此，MySQL 也可以在内存中容纳更多的值。这增加了找到行而不用读取索引中较多块的可能性。</p>
+<p><strong>考虑在列上进行的比较类型</strong><br>索引可用于“&lt;”、“&lt;=”、“=”、“&gt;=”、“&gt;”和 BETWEEN 运算。在模式具有一个直接量前缀时，索引也用于 LIKE 运算。如果只将某个列用于其他类型的运算时（如 STRCMP( )），对其进行索引没有价值。<br>而且索引列上只有符合最左前缀的规则才可以使用范围查找，范围之后的列索引是不可用的</p>
+<h3 id="面试题：下面表的索引建立是否合理"><a href="#面试题：下面表的索引建立是否合理" class="headerlink" title="面试题：下面表的索引建立是否合理"></a>面试题：下面表的索引建立是否合理</h3><p>有这么一张表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`geek`</span> (</span><br><span class="line">  <span class="string">`a`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`b`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`c`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`d`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`a`</span>,<span class="string">`b`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`c`</span> (<span class="string">`c`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`ca`</span> (<span class="string">`c`</span>,<span class="string">`a`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`cb`</span> (<span class="string">`c`</span>,<span class="string">`b`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
+<p>因为业务需要，创建了联合主键索引 a，b  之所以创建联合主键索引是因为下面两条sql被高频查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> geek <span class="keyword">where</span> c=N <span class="keyword">order</span> <span class="keyword">by</span> a <span class="keyword">limit</span> <span class="number">1</span>;  <span class="comment">--A sql</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> geek <span class="keyword">where</span> c=N <span class="keyword">order</span> <span class="keyword">by</span> b <span class="keyword">limit</span> <span class="number">1</span>;  <span class="comment">--B sql</span></span><br></pre></td></tr></table></figure>
+<p>请问，该表的索引创建合理吗？</p>
+<p>解答</p>
+<ul>
+<li>首先，ab是联合主键索引，因此ab的聚集索引实际上就是ab顺序索引（得益于B+tree），相当于 order by a, b</li>
+<li>索引ca是按照c排序，a排序，同时记录了主键 </li>
+<li>索引cb是按照c排序，b排序，同时记录了主键</li>
+<li>当执行 A sql 的时候，由于 c = N 条件限定，取出来的数据已经按照a排序好了（得益于ab是主键索引）。因此ca这个索引看似生效，实际上是无作用的</li>
+<li>当执行 B sql 的时候，由于 c = N 条件限定，但是b并不是有序的，主键索引不是复用，所以cb索引是有效的</li>
+</ul>
+<h3 id="什么情况下会造成明明创建了索引，但是查询sql并没有使用索引的情况"><a href="#什么情况下会造成明明创建了索引，但是查询sql并没有使用索引的情况" class="headerlink" title="什么情况下会造成明明创建了索引，但是查询sql并没有使用索引的情况"></a>什么情况下会造成明明创建了索引，但是查询sql并没有使用索引的情况</h3><p><strong>最佳左前缀匹配</strong><br>sql查询语句并没有使用联合索引的第一个字段进行查询，会导致索引查询失效</p>
+<p><strong>索引覆盖</strong><br>当一张表创建的非主键索引有多个，如下</p>
+<ul>
+<li>id_card 身份证号索引</li>
+<li>id_card_name 身份证号+姓名索引<br>如果执行sql <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> id_card = <span class="string">'1111'</span>;</span><br></pre></td></tr></table></figure>
+使用到的索引 id_card_name ，而并不会使用索引 id_card （具体为什么，牵扯到mysql的查询优化器）<br>这样从肉眼的角度来看，就会造成明明创建了id_card索引，但是查询语句并没有使用</li>
+</ul>
+<h3 id="为什么官方建议使用自增长主键作为索引"><a href="#为什么官方建议使用自增长主键作为索引" class="headerlink" title="为什么官方建议使用自增长主键作为索引"></a>为什么官方建议使用自增长主键作为索引</h3><p>结合B+Tree的特点，自增主键是连续的，在插入过程中尽量减少页分裂，即使要进行页分裂，也只会分裂很少一部分。并且能减少数据的移动，每次插入都是插入到最后。总之就是减少分裂和移动的频率。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">索引</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">面试题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql//" class="article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/mysql/3.1.%20mysql%E7%B4%A2%E5%BC%95%E9%9D%A2%E8%AF%95%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/mysql/3.2.%20mysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql查询优化技巧总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/mysql/1.%20mysql%E7%9A%84%E6%97%A5%E5%BF%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
           </div>
         </div>
       </div>
@@ -220,7 +377,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

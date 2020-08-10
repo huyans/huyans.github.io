@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>知识天地</title>
+  <title>网络通信基础 | 知识天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java&#x2F;...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知识天地">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="文章参考来源： 你需要知道的HTTP协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络通信基础">
+<meta property="og:url" content="http://yoursite.com/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/1.%20%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="知识天地">
-<meta property="og:description" content="Java&#x2F;...">
+<meta property="og:description" content="文章参考来源： 你需要知道的HTTP协议">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-23T01:00:32.958Z">
-<meta property="article:modified_time" content="2020-07-21T03:13:38.000Z">
+<meta property="og:image" content="https://i.niupic.com/images/2020/08/05/8uAd.png">
+<meta property="article:published_time" content="2020-08-05T00:24:19.727Z">
+<meta property="article:modified_time" content="2020-08-05T23:52:04.076Z">
 <meta property="article:author" content="huyan">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="http">
+<meta property="article:tag" content="tcp">
+<meta property="article:tag" content="ip">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.niupic.com/images/2020/08/05/8uAd.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -153,53 +157,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article class="article">
-  <h3 class="category-count">共计 4 个分类, 14 个标签</h3>
+            <article id="post-网络通信/1. 网络通信基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-  <ul class="category-list">
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/http/" class="category-list-link" title="http">
-            http
-            <span class="category-list-count">1</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/mysql/" class="category-list-link" title="mysql">
-            mysql
-            <span class="category-list-count">7</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/redis/" class="category-list-link" title="redis">
-            redis
-            <span class="category-list-count">2</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/网络通信/" class="category-list-link" title="网络通信">
-            网络通信
-            <span class="category-list-count">3</span>
-          </a>
-        </li>
-      
-    
-  </ul>
+    <h1 class="article-title" itemprop="name">
+      网络通信基础
+    </h1>
   
-  <div class="tag-cloud">
-    <a href="/tags/cookie/" style="font-size: 20px;">cookie</a> <a href="/tags/http/" style="font-size: 27.5px;">http</a> <a href="/tags/ip/" style="font-size: 20px;">ip</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/mysql/" style="font-size: 35px;">mysql</a> <a href="/tags/redis/" style="font-size: 27.5px;">redis</a> <a href="/tags/session/" style="font-size: 20px;">session</a> <a href="/tags/sql%E4%BC%98%E5%8C%96/" style="font-size: 20px;">sql优化</a> <a href="/tags/tcp/" style="font-size: 27.5px;">tcp</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 20px;">事务</a> <a href="/tags/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" style="font-size: 20px;">存储引擎</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 27.5px;">索引</a> <a href="/tags/%E9%94%81/" style="font-size: 20px;">锁</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 27.5px;">面试题</a>
+
+        
+        <a href="/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/1.%20%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-08-05T00:24:19.727Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文章参考来源： <a href="https://juejin.im/post/6844903683424010247" target="_blank" rel="noopener">你需要知道的HTTP协议</a></p>
+<a id="more"></a>
+
+<h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><ul>
+<li>web理念：文档之间相关关联，连成可相互参阅的万维网（www）</li>
+<li>web互连（通讯）的基础：tcp/ip协议族，http属于它内部的子集</li>
+<li>web（www）的三项构建技术：<ul>
+<li>html：页面使用什么语言展示</li>
+<li>URL：页面在什么位置</li>
+<li>http：文档之间传递的协议是什么</li>
+</ul>
+</li>
+<li>tcp/ip协议族分层包括：数据链路层，网络层，传输层 ，应用层</li>
+<li>tcp/ip协议族分层作用：各层各司其职，模块划分清晰，便于维护，解耦</li>
+</ul>
+<h3 id="2-各分层概述"><a href="#2-各分层概述" class="headerlink" title="2. 各分层概述"></a>2. 各分层概述</h3><p><strong>2.1 应用层</strong><br>决定了向用户提供应用服务时通讯的活动<br>包括：FTP，DNS，HTTP等</p>
+<p><strong>2.2 传输层</strong><br>提供网络中两台计算机之间的数据传输<br>包括：TCP，UDP</p>
+<p><strong>2.3 网络层</strong><br>众多选项中选择合适的传输路径传输数据包</p>
+<p><strong>2.4 链路层</strong><br>用来处理网络的硬件部分</p>
+<h3 id="3-TCP-IP-数据传输方式"><a href="#3-TCP-IP-数据传输方式" class="headerlink" title="3. TCP/IP 数据传输方式"></a>3. TCP/IP 数据传输方式</h3><p><img src="https://i.niupic.com/images/2020/08/05/8uAd.png" alt="TCP/IP数据传输方式"></p>
+<ul>
+<li>利用tcp/ip协议族通讯时，通过分层顺序通讯。</li>
+<li>发送端从应用层往下走，接收端从应用层往上走</li>
+<li>发送端每经过一层都会被打上该层所属的首部信息，接收端每经过一层将把首部去掉</li>
+</ul>
+<h3 id="4-与HTTP协议相关联的其他协议"><a href="#4-与HTTP协议相关联的其他协议" class="headerlink" title="4. 与HTTP协议相关联的其他协议"></a>4. 与HTTP协议相关联的其他协议</h3><p><strong>4.1 IP协议</strong></p>
+<ul>
+<li>位于网络层</li>
+<li>作用是把各种数据包传送给对方</li>
+<li>确保传送正确的两个条件<ul>
+<li>IP地址：指明了节点被分配到的地址。可变。</li>
+<li>MAC地址：网卡所属的固定地址。不可变。</li>
+</ul>
+</li>
+</ul>
+<p><strong>4.2 TCP协议</strong></p>
+<ul>
+<li>位于传输层</li>
+<li>作用是提供可靠的字节流服务</li>
+<li>字节流服务：将大块数据分割成以报文段为单位的数据包</li>
+<li>可靠：采用三次握手策略</li>
+</ul>
+<p><strong>4.3 DNS协议</strong></p>
+<ul>
+<li>应用层协议</li>
+<li>作用是提供域名到ip地址之间的解析服务</li>
+</ul>
+<p><strong>4.4 http协议和tcp协议的区别与联系</strong><br><strong>区别</strong></p>
+<ul>
+<li>所属协议层不同：tcp属于传输层，http属于应用层</li>
+<li>职责不同：tcp解决数据传输问题，http解决数据包装问题</li>
+</ul>
+<p><strong>联系</strong></p>
+<ul>
+<li>http协议是构建在tcp协议之上的</li>
+<li>打个比方：ip是高速公路，tcp是跑在高速公路上的卡车，http是卡车里面的包裹</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tcp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ip</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网络通信//" class="article-tag-list-link color5">网络通信</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/1.%20%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/4.%20Cookie%EF%BC%8CSession%EF%BC%8CToken/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          cookie,session,token
+        
+      </div>
+    </a>
+  
+  
+    <a href="/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/2.%20HTTP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">http</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
           </div>
         </div>
       </div>
@@ -220,7 +403,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

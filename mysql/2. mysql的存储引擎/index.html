@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>知识天地</title>
+  <title>存储引擎 | 知识天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java&#x2F;...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知识天地">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="MySQL有哪些存储引擎 InnoDB MyISAM Memory NDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储引擎">
+<meta property="og:url" content="http://yoursite.com/mysql/2.%20mysql%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="知识天地">
-<meta property="og:description" content="Java&#x2F;...">
+<meta property="og:description" content="MySQL有哪些存储引擎 InnoDB MyISAM Memory NDB">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-23T01:00:32.958Z">
-<meta property="article:modified_time" content="2020-07-21T03:13:38.000Z">
+<meta property="og:image" content="https://i.niupic.com/images/2020/07/23/8rLH.png">
+<meta property="article:published_time" content="2020-07-23T00:54:43.176Z">
+<meta property="article:modified_time" content="2020-07-25T02:10:04.910Z">
 <meta property="article:author" content="huyan">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="存储引擎">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.niupic.com/images/2020/07/23/8rLH.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -153,53 +155,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article class="article">
-  <h3 class="category-count">共计 4 个分类, 14 个标签</h3>
+            <article id="post-mysql/2. mysql的存储引擎" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-  <ul class="category-list">
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/http/" class="category-list-link" title="http">
-            http
-            <span class="category-list-count">1</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/mysql/" class="category-list-link" title="mysql">
-            mysql
-            <span class="category-list-count">7</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/redis/" class="category-list-link" title="redis">
-            redis
-            <span class="category-list-count">2</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/网络通信/" class="category-list-link" title="网络通信">
-            网络通信
-            <span class="category-list-count">3</span>
-          </a>
-        </li>
-      
-    
-  </ul>
+    <h1 class="article-title" itemprop="name">
+      存储引擎
+    </h1>
   
-  <div class="tag-cloud">
-    <a href="/tags/cookie/" style="font-size: 20px;">cookie</a> <a href="/tags/http/" style="font-size: 27.5px;">http</a> <a href="/tags/ip/" style="font-size: 20px;">ip</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/mysql/" style="font-size: 35px;">mysql</a> <a href="/tags/redis/" style="font-size: 27.5px;">redis</a> <a href="/tags/session/" style="font-size: 20px;">session</a> <a href="/tags/sql%E4%BC%98%E5%8C%96/" style="font-size: 20px;">sql优化</a> <a href="/tags/tcp/" style="font-size: 27.5px;">tcp</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 20px;">事务</a> <a href="/tags/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" style="font-size: 20px;">存储引擎</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 27.5px;">索引</a> <a href="/tags/%E9%94%81/" style="font-size: 20px;">锁</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 27.5px;">面试题</a>
+
+        
+        <a href="/mysql/2.%20mysql%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="archive-article-date">
+  	<time datetime="2020-07-23T00:54:43.176Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL有哪些存储引擎"><a href="#MySQL有哪些存储引擎" class="headerlink" title="MySQL有哪些存储引擎"></a>MySQL有哪些存储引擎</h3><ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+<li>Memory</li>
+<li>NDB</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="说一说MyISAM"><a href="#说一说MyISAM" class="headerlink" title="说一说MyISAM"></a>说一说MyISAM</h3><p>MyISAM拥有较高的插入，查询速度，但不支持事务<br>特点：</p>
+<ul>
+<li>大文件（达到63位文件长度）在支持大文件的文件系统和操作系统上被支持</li>
+<li>当删除/插入/更新等操作混合自一起的时候，动态尺寸的行产生更少碎片（这主要是通过合并相邻的被删除的块，以及若下一个块被删除，就扩展到下一块自动完成）</li>
+<li>以MyISAM作为存储引擎的表最大可建立64个索引，每个索引的最大列数是16.</li>
+<li>NULL值被允许建立在索引列中，这个值占每个键的0-1个字节</li>
+<li>可以把数据文件和索引文件放在不同目录</li>
+</ul>
+<h3 id="说一说InnoDB存储引擎"><a href="#说一说InnoDB存储引擎" class="headerlink" title="说一说InnoDB存储引擎"></a>说一说InnoDB存储引擎</h3><p>InnoDB是事务型数据库的首选引擎，支持事务，支持行锁及外键绑定<br>MySQL的默认引擎就是InnoDB</p>
+<ul>
+<li>InnoDB提供 提交，回滚，崩溃恢复的功能，</li>
+<li>InnoDB存储引擎完全与MySQL服务器整合，InnoDB存储引擎为在主内存中缓存数据和索引而维持它自己的缓冲池。</li>
+<li>InnoDB将它的表和索引在一个逻辑表空间中，表空间可以包含数个文件（或原始磁盘文件）。这与MyISAM表不同，比如在MyISAM表中每个表被存放在分离的文件中。InnoDB表可以是任何尺寸，即使在文件尺寸被限制为2GB的操作系统上</li>
+<li>InnoDB支持外键完整性约束，存储表中的数据时，每张表的存储都按主键顺序存放<ul>
+<li>如果没有在表定义时指定主键，InnoDB会自动为每一行生成一个6字节的rowId， 并以此作为主键</li>
+</ul>
+</li>
+</ul>
+<h3 id="InnoDB与MyISAM的区别"><a href="#InnoDB与MyISAM的区别" class="headerlink" title="InnoDB与MyISAM的区别"></a>InnoDB与MyISAM的区别</h3><ul>
+<li>InnoDB支持事务，MyISAM不支持事务，</li>
+<li>InnoDB支持外键，MyISAM不支持，对一个包含了外键关系的表修改其存储引擎为MyISAM会报错、</li>
+<li>InnoDB是聚集索引，MyISAM是非聚集索引（见索引分支）</li>
+<li>InnoDB不保存表的具体行数，所以 select count(*) from T 会造成全表扫描，而MyISAM保存了一个变量来记录总行数，执行上述sql只需要返回该变量即可，速度相当快。</li>
+<li>InnoDB锁的最小粒度是行锁，MyISAM锁的最小粒度是表锁。<br><img src="https://i.niupic.com/images/2020/07/23/8rLH.png" alt="详情对比图"></li>
+</ul>
+<h3 id="一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15-16-17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15-？"><a href="#一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15-16-17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15-？" class="headerlink" title="一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15 ？"></a>一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15 ？</h3><ul>
+<li>如果表的存储引擎是MyISAM，那么是18。因为MyISAM表会把自增主键的最大ID 记录到数据文件中，重启MySQL自增主键的最大ID也不会丢失；</li>
+<li>如果表的存储引擎是InnoDB，那么是15。因为InnoDB 表只是把自增主键的最大ID记录到内存中，所以重启数据库或对表进行OPTION操作，都会导致最大ID丢失。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">存储引擎</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql//" class="article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/mysql/2.%20mysql%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/mysql/1.%20mysql%E7%9A%84%E6%97%A5%E5%BF%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/mysql/4.%20mysql%E4%BA%8B%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql事务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
           </div>
         </div>
       </div>
@@ -220,7 +373,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

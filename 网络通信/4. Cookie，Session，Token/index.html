@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>知识天地</title>
+  <title>cookie,session,token | 知识天地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java&#x2F;...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知识天地">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="文章参考来源：cookie与session 1. 什么是cookie与sessioncookieHTTP Cookie（也叫 Web Cookie或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookie,session,token">
+<meta property="og:url" content="http://yoursite.com/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/4.%20Cookie%EF%BC%8CSession%EF%BC%8CToken/index.html">
 <meta property="og:site_name" content="知识天地">
-<meta property="og:description" content="Java&#x2F;...">
+<meta property="og:description" content="文章参考来源：cookie与session 1. 什么是cookie与sessioncookieHTTP Cookie（也叫 Web Cookie或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-23T01:00:32.958Z">
-<meta property="article:modified_time" content="2020-07-21T03:13:38.000Z">
+<meta property="article:published_time" content="2020-08-05T00:54:07.422Z">
+<meta property="article:modified_time" content="2020-08-06T02:42:18.132Z">
 <meta property="article:author" content="huyan">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="cookie">
+<meta property="article:tag" content="session">
 <meta name="twitter:card" content="summary">
   
   
@@ -153,53 +154,208 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article class="article">
-  <h3 class="category-count">共计 4 个分类, 14 个标签</h3>
+            <article id="post-网络通信/4. Cookie，Session，Token" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-  <ul class="category-list">
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/http/" class="category-list-link" title="http">
-            http
-            <span class="category-list-count">1</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/mysql/" class="category-list-link" title="mysql">
-            mysql
-            <span class="category-list-count">7</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/redis/" class="category-list-link" title="redis">
-            redis
-            <span class="category-list-count">2</span>
-          </a>
-        </li>
-      
-    
-      
-        <li class="category-list-item">
-          <a href="/categories/网络通信/" class="category-list-link" title="网络通信">
-            网络通信
-            <span class="category-list-count">3</span>
-          </a>
-        </li>
-      
-    
-  </ul>
+    <h1 class="article-title" itemprop="name">
+      cookie,session,token
+    </h1>
   
-  <div class="tag-cloud">
-    <a href="/tags/cookie/" style="font-size: 20px;">cookie</a> <a href="/tags/http/" style="font-size: 27.5px;">http</a> <a href="/tags/ip/" style="font-size: 20px;">ip</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/mysql/" style="font-size: 35px;">mysql</a> <a href="/tags/redis/" style="font-size: 27.5px;">redis</a> <a href="/tags/session/" style="font-size: 20px;">session</a> <a href="/tags/sql%E4%BC%98%E5%8C%96/" style="font-size: 20px;">sql优化</a> <a href="/tags/tcp/" style="font-size: 27.5px;">tcp</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 20px;">事务</a> <a href="/tags/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" style="font-size: 20px;">存储引擎</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 27.5px;">索引</a> <a href="/tags/%E9%94%81/" style="font-size: 20px;">锁</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 27.5px;">面试题</a>
+
+        
+        <a href="/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/4.%20Cookie%EF%BC%8CSession%EF%BC%8CToken/" class="archive-article-date">
+  	<time datetime="2020-08-05T00:54:07.422Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文章参考来源：<a href="https://www.cnblogs.com/ityouknow/p/10856177.html" target="_blank" rel="noopener">cookie与session</a></p>
+<h3 id="1-什么是cookie与session"><a href="#1-什么是cookie与session" class="headerlink" title="1. 什么是cookie与session"></a>1. 什么是cookie与session</h3><p><strong>cookie</strong><br>HTTP Cookie（也叫 Web Cookie或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。<br>通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。</p>
+<p>Cookie 主要用于以下三个方面：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+<p><strong>session</strong><br>Session 代表着服务器和客户端一次会话的过程。<strong>Session 对象存储特定用户会话所需的属性及配置信息</strong>。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当客户端关闭会话，或者 Session 超时失效时会话结束。</p>
+<h3 id="2-cookie与session的区别"><a href="#2-cookie与session的区别" class="headerlink" title="2. cookie与session的区别"></a>2. cookie与session的区别</h3><ul>
+<li>作用范围不同：cookie保存在客户端，session保存在服务器端</li>
+<li>存取方式不同：cookie只能保存ASCII，session可以保存任务数据类型，</li>
+<li>有效期不同： cookie可以设置长时间保持，session的时效则比较短，浏览器关闭或者session超时都会导致session失效</li>
+<li>安全性不同：cookie存在客户端（浏览器）容易被非法获取，session存在服务器端较为安全</li>
+<li>存储大小不同：单个cookie保存的数据大小不超过4K，session可存储数据远远高于cookie</li>
+</ul>
+<h3 id="3-cookie与session的关联"><a href="#3-cookie与session的关联" class="headerlink" title="3. cookie与session的关联"></a>3. cookie与session的关联</h3><p>用户第一次请求服务器的时候，服务器根据用户提交的相关信息，创建创建对应的 Session ，请求返回时将此 Session 的唯一标识信息 SessionID 返回给浏览器，浏览器接收到服务器返回的 SessionID 信息后，会将此信息存入到 Cookie 中，同时 Cookie 记录此 SessionID 属于哪个域名。</p>
+<p>当用户第二次访问服务器的时候，请求会自动判断此域名下是否存在 Cookie 信息，如果存在<strong>自动将 Cookie 信息也发送给服务端</strong>，服务端会从 Cookie 中获取 SessionID，再根据 SessionID 查找对应的 Session 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 Session 证明用户已经登录可执行后面操作。</p>
+<p>根据以上流程可知，<strong>SessionID 是连接 Cookie 和 Session 的一道桥梁，大部分系统也是根据此原理来验证用户登录状态</strong>。</p>
+<h3 id="4-如果禁用了cookie，那么session该怎么传递呢？"><a href="#4-如果禁用了cookie，那么session该怎么传递呢？" class="headerlink" title="4. 如果禁用了cookie，那么session该怎么传递呢？"></a>4. 如果禁用了cookie，那么session该怎么传递呢？</h3><p><strong>作为url参数传递(非常麻烦)</strong><br>比如请求 <a href="http://www.domain.com?userId=13" target="_blank" rel="noopener">http://www.domain.com?userId=13</a> 这是一个get请求，用来获取用户id为13的用户信息，如果在cookie禁用的情况下，可以改成 <a href="http://www.domain.com?userId=13&amp;sessionID=11111111" target="_blank" rel="noopener">http://www.domain.com?userId=13&amp;sessionID=11111111</a><br>使用这种方式的缺点很明显</p>
+<ul>
+<li>所有的请求都要默认将sessionID作为一个参数传递到后台，而这个参数是和业务完全无关的</li>
+<li>最好不使用get请求，不然sessionID的值会在浏览器网址中可查看到，一般使用这种方式的session传递，都使用POST请求</li>
+</ul>
+<p><strong>使用token</strong><br>token是服务器端生成的一个字符串，作为客户端请求的一个标识，Token机制与cookie+session的机制较为类似<br>当用户第一次登陆之后，服务器生成一个token返回给客户端，客户端之后的每次请求都携带这个token，服务器token校验通过之后，就无需再次校验登陆了</p>
+<h3 id="5-服务器集群模式下，如何考虑session共享"><a href="#5-服务器集群模式下，如何考虑session共享" class="headerlink" title="5. 服务器集群模式下，如何考虑session共享"></a>5. 服务器集群模式下，如何考虑session共享</h3><p><strong>ngnix的ip_hash策略</strong><br>使用ngnix的ip_hash策略，将特点相同的一系列请求发送到同一台服务器，比如按照地区，华东的请求归类到一台服务器，华中的请求归类到一台服务器….<br>ip_hash策略个人感觉只是一种应急策略，因为就我目前就职的这家公司而言，使用ip_hash策略而用户的请求仍然会重定向到登陆界面</p>
+<p><strong>session复制</strong><br>session复制就是用户在一台服务器登陆，将session信息广播给其他服务器。<br>缺点很明显</p>
+<ul>
+<li>每台服务器保存的无效session过多</li>
+<li>session之间的同步，变数太多，很容易出bug（比如某台服务器宕机，重启之后，还需要向这台服务器发送session数据）</li>
+</ul>
+<p><strong>session集中共享</strong><br>这个是一个比较抽象的概念，就是用户在一台服务器上登陆之后，将session保存在一个中间件方，而后续用户的所有请求，第一步session校验不再是从本地缓存去session，而是直接去中间件获取session，如果有，就代表了用户已经登陆，可以后续操作<br>一般最多使用的是 redis 共享，并且可以很好的与shiro等集成<br>一些老的应用，可以使用tomcat session共享</p>
+<h3 id="6-跨域session该如何解决"><a href="#6-跨域session该如何解决" class="headerlink" title="6. 跨域session该如何解决"></a>6. 跨域session该如何解决</h3><p>TODO<br>抽象地说有两个较为常见的解决方式</p>
+<ul>
+<li>使用ngnix，将网址B的请求定向到网址A上（假设用户已经在网址A上登陆了）</li>
+<li>使用Iframe，比如在网址B页面上使用Iframe将网址A引过来（如果网址B是HTTP还好，https的话是网址B内部的Iframe是不会自动加载的，需要在网址B的服务器tomcat目录下加上网址A的证书才行）</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cookie</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网络通信//" class="article-tag-list-link color5">网络通信</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/4.%20Cookie%EF%BC%8CSession%EF%BC%8CToken/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/3.%20TCP%E5%8D%8F%E8%AE%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          TCP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/1.%20%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">网络通信基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
           </div>
         </div>
       </div>
@@ -220,7 +376,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
